@@ -33,8 +33,8 @@ Bu proje, Northwind veritabanı üzerinde DBSCAN algoritması kullanarak çeşit
 
 1. Projeyi klonlayın:
 ```bash
-git clone [repository-url]
-cd [project-directory]
+git clone https://github.com/artfuturx/northwind_dbscan_analysis.git
+cd northwind_dbscan_analysis
 ```
 
 2. Sanal ortam oluşturun ve aktif edin:
@@ -82,24 +82,28 @@ python dbscan_api.py
 
 ### 1. Müşteri Segmentasyonu
 - **Endpoint**: `/customer-segmentation`
+- **URL**: http://localhost:8003/customer-segmentation
 - **Metod**: GET
 - **Açıklama**: Müşterileri satın alma davranışlarına göre gruplandırır
 - **Görsel**: ![Müşteri Segmentasyonu](images/customer_dbsan.png)
 
 ### 2. Tedarikçi Analizi
 - **Endpoint**: `/supplier-segmentation`
+- **URL**: http://localhost:8003/supplier-segmentation
 - **Metod**: GET
 - **Açıklama**: Tedarikçileri ürün performanslarına göre gruplandırır
 - **Görsel**: ![Tedarikçi Analizi](images/supplier_dbscan.png)
 
 ### 3. Sipariş Analizi
 - **Endpoint**: `/order-analysis`
+- **URL**: http://localhost:8003/order-analysis
 - **Metod**: GET
 - **Açıklama**: Siparişleri çeşitli metrikler üzerinden analiz eder
 - **Görsel**: ![Sipariş Analizi](images/orders_dbscan.png)
 
 ### 4. Ülke Analizi
 - **Endpoint**: `/country-analysis`
+- **URL**: http://localhost:8003/country-analysis
 - **Metod**: GET
 - **Açıklama**: Ülkeleri satış performanslarına göre gruplandırır
 - **Görsel**: ![Ülke Analizi](images/country_dbscan.png)
@@ -138,7 +142,7 @@ python dbscan_api.py
 
 ## Katkıda Bulunma
 
-1. Bu repository'yi fork edin
+1. Bu repository'yi fork edin: https://github.com/artfuturx/northwind_dbscan_analysis.git
 2. Yeni bir branch oluşturun (`git checkout -b feature/amazing-feature`)
 3. Değişikliklerinizi commit edin (`git commit -m 'Add some amazing feature'`)
 4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
