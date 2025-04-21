@@ -85,28 +85,36 @@ python dbscan_api.py
 - **URL**: http://localhost:8003/customer-segmentation
 - **Metod**: GET
 - **Açıklama**: Müşterileri satın alma davranışlarına göre gruplandırır
-- **Görsel**: ![Müşteri Segmentasyonu](images/customer_dbsan.png)
+- **Görseller**: 
+  - Ana Görsel: ![Müşteri Segmentasyonu](images/customer_dbsan.png)
+  - Detay Görsel: ![Müşteri Segmentasyonu Detay](images/customer_dbscan_1.png)
 
 ### 2. Tedarikçi Analizi
 - **Endpoint**: `/supplier-segmentation`
 - **URL**: http://localhost:8003/supplier-segmentation
 - **Metod**: GET
 - **Açıklama**: Tedarikçileri ürün performanslarına göre gruplandırır
-- **Görsel**: ![Tedarikçi Analizi](images/supplier_dbscan.png)
+- **Görseller**: 
+  - Ana Görsel: ![Tedarikçi Analizi](images/supplier_dbscan.png)
+  - Detay Görsel: ![Tedarikçi Analizi Detay](images/suppliers_dbscan.png)
 
 ### 3. Sipariş Analizi
 - **Endpoint**: `/order-analysis`
 - **URL**: http://localhost:8003/order-analysis
 - **Metod**: GET
 - **Açıklama**: Siparişleri çeşitli metrikler üzerinden analiz eder
-- **Görsel**: ![Sipariş Analizi](images/orders_dbscan.png)
+- **Görseller**: 
+  - Ana Görsel: ![Sipariş Analizi](images/orders_dbscan.png)
+  - Detay Görsel: ![Sipariş Analizi Detay](images/orders_dbscan_1.png)
 
 ### 4. Ülke Analizi
 - **Endpoint**: `/country-analysis`
 - **URL**: http://localhost:8003/country-analysis
 - **Metod**: GET
 - **Açıklama**: Ülkeleri satış performanslarına göre gruplandırır
-- **Görsel**: ![Ülke Analizi](images/country_dbscan.png)
+- **Görseller**: 
+  - Ana Görsel: ![Ülke Analizi](images/country_dbscan.png)
+  - Detay Görsel: ![Ülke Analizi Detay](images/country_dbscan_1.png)
 
 ## Analiz Sonuçları
 
