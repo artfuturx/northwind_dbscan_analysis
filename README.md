@@ -84,23 +84,31 @@ python dbscan_api.py
 - **Endpoint**: `/customer-segmentation`
 - **URL**: http://localhost:8003/customer-segmentation
 - **Metod**: GET
-- **Açıklama**: Müşterileri satın alma davranışlarına göre gruplandırır
+- **Açıklama**: Müşterileri sipariş sayısı, toplam harcama ve ortalama sipariş tutarına göre gruplayarak DBSCAN algoritmasıyla segmentlere ayırır. Aykırı (anormal) müşteri davranışlarını da tespit eder.
 - **Görseller**: 
   - Ana Görsel: ![Müşteri Segmentasyonu](images/customer_dbsan.png)
     - Bu görsel, müşterilerin toplam sipariş sayısı ve harcama miktarlarına göre dağılımını gösterir. X ekseni toplam sipariş sayısını, Y ekseni toplam harcama miktarını temsil eder. Renkler farklı müşteri segmentlerini gösterir.
   - Detay Görsel: ![Müşteri Segmentasyonu Detay](images/customer_dbscan_1.png)
     - Bu görsel, müşterilerin daha detaylı özelliklerini (ortalama sipariş büyüklüğü, sipariş sıklığı vb.) gösterir. Her nokta bir müşteriyi temsil eder ve benzer davranış gösteren müşteriler aynı renkte gruplandırılmıştır.
+- **Sonuç Değerlendirmesi**:
+  - Müşteri kitlesi genel olarak 2 ana gruba ayrılmıştır
+  - Aykırı olan müşteriler genellikle çok yüksek harcama yapan veya sipariş sayısı fazla olan özel profillerdir
+  - Pazarlama stratejilerinde bu segmentler hedeflenebilir
 
 ### 2. Tedarikçi Analizi
 - **Endpoint**: `/supplier-segmentation`
 - **URL**: http://localhost:8003/supplier-segmentation
 - **Metod**: GET
-- **Açıklama**: Tedarikçileri ürün performanslarına göre gruplandırır
+- **Açıklama**: Tedarikçileri sattıkları ürün miktarı ve ortalama satış fiyatına göre analiz ederek benzer tedarikçileri gruplar, anormal tedarikçileri de aykırı olarak işaretler.
 - **Görseller**: 
   - Ana Görsel: ![Tedarikçi Analizi](images/supplier_dbscan.png)
     - Bu görsel, tedarikçilerin ürün çeşitliliği ve satış performansına göre dağılımını gösterir. X ekseni ürün çeşitliliğini, Y ekseni satış performansını temsil eder. Her nokta bir tedarikçiyi gösterir.
   - Detay Görsel: ![Tedarikçi Analizi Detay](images/suppliers_dbscan.png)
     - Bu görsel, tedarikçilerin daha detaylı performans metriklerini (ortalama ürün fiyatı, stok seviyesi vb.) gösterir. Renkler farklı tedarikçi segmentlerini temsil eder.
+- **Sonuç Değerlendirmesi**:
+  - Düşük fiyatlı ve düşük hacimli çalışan tedarikçiler çoğunluktadır
+  - Birkaç aykırı tedarikçi yüksek fiyatlı ürünlerde uzmanlaşmış olabilir
+  - Bu analiz, tedarikçi ilişkileri ve fiyatlandırma stratejileri için kritik içgörüler sağlar
 
 ### 3. Sipariş Analizi
 - **Endpoint**: `/order-analysis`
@@ -112,39 +120,25 @@ python dbscan_api.py
     - Bu görsel, siparişlerin toplam tutar ve ürün miktarına göre dağılımını gösterir. X ekseni sipariş tutarını, Y ekseni ürün miktarını temsil eder. Her nokta bir siparişi gösterir.
   - Detay Görsel: ![Sipariş Analizi Detay](images/orders_dbscan_1.png)
     - Bu görsel, siparişlerin daha detaylı özelliklerini (ürün çeşitliliği, teslimat süresi vb.) gösterir. Renkler farklı sipariş tiplerini temsil eder.
+- **Sonuç Değerlendirmesi**:
+  - Siparişlerin çoğu düşük-orta aralıkta kümelenmiştir
+  - Çok yüksek tutarlı veya aşırı düşük/yüksek miktarlı siparişler aykırı olarak belirlenmiştir
+  - Sahte sipariş, kurumsal alım gibi özel durumlar bu segment sayesinde ayrıştırılabilir
 
 ### 4. Ülke Analizi
 - **Endpoint**: `/country-analysis`
 - **URL**: http://localhost:8003/country-analysis
 - **Metod**: GET
-- **Açıklama**: Ülkeleri satış performanslarına göre gruplandırır
+- **Açıklama**: Ülkelerin sipariş davranışlarını analiz eder: toplam sipariş sayısı ve ortalama sipariş tutarı temel alınarak DBSCAN ile ülke grupları oluşturulur.
 - **Görseller**: 
   - Ana Görsel: ![Ülke Analizi](images/country_dbscan.png)
     - Bu görsel, ülkelerin toplam satış ve müşteri sayısına göre dağılımını gösterir. X ekseni toplam satışı, Y ekseni müşteri sayısını temsil eder. Her nokta bir ülkeyi gösterir.
   - Detay Görsel: ![Ülke Analizi Detay](images/country_dbscan_1.png)
     - Bu görsel, ülkelerin daha detaylı performans metriklerini (ortalama sipariş büyüklüğü, müşteri sadakati vb.) gösterir. Renkler farklı ülke segmentlerini temsil eder.
-
-## Analiz Sonuçları
-
-### Müşteri Segmentasyonu
-- Müşteriler satın alma davranışlarına göre gruplandırıldı
-- Her küme için ortalama sipariş sayısı ve toplam harcama analiz edildi
-- Aykırı değerler (sıra dışı müşteriler) tespit edildi
-
-### Tedarikçi Analizi
-- Tedarikçiler ürün performanslarına göre segmentlere ayrıldı
-- Her segment için ortalama ürün sayısı ve satış performansı analiz edildi
-- Sıra dışı performans gösteren tedarikçiler belirlendi
-
-### Sipariş Analizi
-- Siparişler çeşitli metrikler üzerinden gruplandırıldı
-- Her küme için ortalama sipariş büyüklüğü ve ürün çeşitliliği analiz edildi
-- Olağandışı siparişler tespit edildi
-
-### Ülke Analizi
-- Ülkeler satış performanslarına göre gruplandırıldı
-- Her ülke için ortalama sipariş büyüklüğü ve müşteri sayısı analiz edildi
-- Sıra dışı performans gösteren ülkeler belirlendi
+- **Sonuç Değerlendirmesi**:
+  - Bazı ülkelerde az sipariş ama yüksek tutar; bazılarında çok sipariş ama düşük tutar gözlenmiştir
+  - Farklı tüketim alışkanlıkları tespit edilmiştir
+  - Bölgesel pazarlama stratejileri için önemli bir yol göstericidir
 
 ## Teknik Detaylar
 
@@ -156,10 +150,3 @@ python dbscan_api.py
 - **API Framework**: FastAPI
 - **Güvenlik**: Ortam değişkenleri (.env) ile hassas bilgilerin korunması
 
-## Katkıda Bulunma
-
-1. Bu repository'yi fork edin: https://github.com/artfuturx/northwind_dbscan_analysis.git
-2. Yeni bir branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add some amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Bir Pull Request oluşturun 
