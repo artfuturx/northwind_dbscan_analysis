@@ -87,7 +87,9 @@ python dbscan_api.py
 - **Açıklama**: Müşterileri satın alma davranışlarına göre gruplandırır
 - **Görseller**: 
   - Ana Görsel: ![Müşteri Segmentasyonu](images/customer_dbsan.png)
+    - Bu görsel, müşterilerin toplam sipariş sayısı ve harcama miktarlarına göre dağılımını gösterir. X ekseni toplam sipariş sayısını, Y ekseni toplam harcama miktarını temsil eder. Renkler farklı müşteri segmentlerini gösterir.
   - Detay Görsel: ![Müşteri Segmentasyonu Detay](images/customer_dbscan_1.png)
+    - Bu görsel, müşterilerin daha detaylı özelliklerini (ortalama sipariş büyüklüğü, sipariş sıklığı vb.) gösterir. Her nokta bir müşteriyi temsil eder ve benzer davranış gösteren müşteriler aynı renkte gruplandırılmıştır.
 
 ### 2. Tedarikçi Analizi
 - **Endpoint**: `/supplier-segmentation`
@@ -96,7 +98,9 @@ python dbscan_api.py
 - **Açıklama**: Tedarikçileri ürün performanslarına göre gruplandırır
 - **Görseller**: 
   - Ana Görsel: ![Tedarikçi Analizi](images/supplier_dbscan.png)
+    - Bu görsel, tedarikçilerin ürün çeşitliliği ve satış performansına göre dağılımını gösterir. X ekseni ürün çeşitliliğini, Y ekseni satış performansını temsil eder. Her nokta bir tedarikçiyi gösterir.
   - Detay Görsel: ![Tedarikçi Analizi Detay](images/suppliers_dbscan.png)
+    - Bu görsel, tedarikçilerin daha detaylı performans metriklerini (ortalama ürün fiyatı, stok seviyesi vb.) gösterir. Renkler farklı tedarikçi segmentlerini temsil eder.
 
 ### 3. Sipariş Analizi
 - **Endpoint**: `/order-analysis`
@@ -105,7 +109,9 @@ python dbscan_api.py
 - **Açıklama**: Siparişleri çeşitli metrikler üzerinden analiz eder
 - **Görseller**: 
   - Ana Görsel: ![Sipariş Analizi](images/orders_dbscan.png)
+    - Bu görsel, siparişlerin toplam tutar ve ürün miktarına göre dağılımını gösterir. X ekseni sipariş tutarını, Y ekseni ürün miktarını temsil eder. Her nokta bir siparişi gösterir.
   - Detay Görsel: ![Sipariş Analizi Detay](images/orders_dbscan_1.png)
+    - Bu görsel, siparişlerin daha detaylı özelliklerini (ürün çeşitliliği, teslimat süresi vb.) gösterir. Renkler farklı sipariş tiplerini temsil eder.
 
 ### 4. Ülke Analizi
 - **Endpoint**: `/country-analysis`
@@ -114,7 +120,9 @@ python dbscan_api.py
 - **Açıklama**: Ülkeleri satış performanslarına göre gruplandırır
 - **Görseller**: 
   - Ana Görsel: ![Ülke Analizi](images/country_dbscan.png)
+    - Bu görsel, ülkelerin toplam satış ve müşteri sayısına göre dağılımını gösterir. X ekseni toplam satışı, Y ekseni müşteri sayısını temsil eder. Her nokta bir ülkeyi gösterir.
   - Detay Görsel: ![Ülke Analizi Detay](images/country_dbscan_1.png)
+    - Bu görsel, ülkelerin daha detaylı performans metriklerini (ortalama sipariş büyüklüğü, müşteri sadakati vb.) gösterir. Renkler farklı ülke segmentlerini temsil eder.
 
 ## Analiz Sonuçları
 
