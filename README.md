@@ -84,7 +84,7 @@ python dbscan_api.py
 - **Endpoint**: `/customer-segmentation`
 - **URL**: http://localhost:8003/customer-segmentation
 - **Metod**: GET
-- **Açıklama**: Müşterileri sipariş sayısı, toplam harcama ve ortalama sipariş tutarına göre gruplayarak DBSCAN algoritmasıyla segmentlere ayırır. Aykırı (anormal) müşteri davranışlarını da tespit eder.
+- **Açıklama**: Bu endpoint, Northwind veritabanındaki müşterileri sipariş sayısı, toplam harcama ve ortalama sipariş tutarına göre gruplayarak DBSCAN algoritmasıyla segmentlere ayırır. Aykırı (anormal) müşteri davranışlarını da tespit eder.
 - **Görseller**: 
   - Ana Görsel: ![Müşteri Segmentasyonu](images/customer_dbsan.png)
     - Bu görsel, müşterilerin toplam sipariş sayısı ve harcama miktarlarına göre dağılımını gösterir. X ekseni toplam sipariş sayısını, Y ekseni toplam harcama miktarını temsil eder. Renkler farklı müşteri segmentlerini gösterir.
@@ -94,12 +94,19 @@ python dbscan_api.py
   - Müşteri kitlesi genel olarak 2 ana gruba ayrılmıştır
   - Aykırı olan müşteriler genellikle çok yüksek harcama yapan veya sipariş sayısı fazla olan özel profillerdir
   - Pazarlama stratejilerinde bu segmentler hedeflenebilir
+- **Tespit Edilen Aykırı Değerler**:
+  - 11 aykırı müşteri tespit edildi
+  - En dikkat çekici müşteriler:
+    - SAVEA: 116 sipariş
+    - ERNSH: 102 sipariş
+    - QUICK: 86 sipariş
+  - Bu müşteriler özel kampanyalar ve VIP hizmetler için hedeflenebilir
 
 ### 2. Tedarikçi Analizi
 - **Endpoint**: `/supplier-segmentation`
 - **URL**: http://localhost:8003/supplier-segmentation
 - **Metod**: GET
-- **Açıklama**: Tedarikçileri sattıkları ürün miktarı ve ortalama satış fiyatına göre analiz ederek benzer tedarikçileri gruplar, anormal tedarikçileri de aykırı olarak işaretler.
+- **Açıklama**: Bu endpoint, tedarikçileri sattıkları ürün miktarı ve ortalama satış fiyatına göre analiz ederek benzer tedarikçileri gruplar, anormal tedarikçileri de aykırı olarak işaretler.
 - **Görseller**: 
   - Ana Görsel: ![Tedarikçi Analizi](images/supplier_dbscan.png)
     - Bu görsel, tedarikçilerin ürün çeşitliliği ve satış performansına göre dağılımını gösterir. X ekseni ürün çeşitliliğini, Y ekseni satış performansını temsil eder. Her nokta bir tedarikçiyi gösterir.
@@ -109,12 +116,17 @@ python dbscan_api.py
   - Düşük fiyatlı ve düşük hacimli çalışan tedarikçiler çoğunluktadır
   - Birkaç aykırı tedarikçi yüksek fiyatlı ürünlerde uzmanlaşmış olabilir
   - Bu analiz, tedarikçi ilişkileri ve fiyatlandırma stratejileri için kritik içgörüler sağlar
+- **Tespit Edilen Aykırı Değerler**:
+  - 2 aykırı tedarikçi tespit edildi:
+    - "Aux joyeux ecclésiastiques": Yüksek fiyatlı ürünler (ortalama 118.57 USD)
+    - "Gai pâturage": Yüksek satış hacmi (3073 adet)
+  - Bu tedarikçiler özel fiyatlandırma ve stok yönetimi stratejileri gerektirir
 
 ### 3. Sipariş Analizi
 - **Endpoint**: `/order-analysis`
 - **URL**: http://localhost:8003/order-analysis
 - **Metod**: GET
-- **Açıklama**: Siparişleri çeşitli metrikler üzerinden analiz eder
+- **Açıklama**: Bu endpoint, her siparişi toplam ürün miktarı ve toplam tutar açısından değerlendirir ve DBSCAN ile gruplar. Standart dışı siparişleri tespit ederek olası anormallikleri vurgular.
 - **Görseller**: 
   - Ana Görsel: ![Sipariş Analizi](images/orders_dbscan.png)
     - Bu görsel, siparişlerin toplam tutar ve ürün miktarına göre dağılımını gösterir. X ekseni sipariş tutarını, Y ekseni ürün miktarını temsil eder. Her nokta bir siparişi gösterir.
@@ -124,12 +136,19 @@ python dbscan_api.py
   - Siparişlerin çoğu düşük-orta aralıkta kümelenmiştir
   - Çok yüksek tutarlı veya aşırı düşük/yüksek miktarlı siparişler aykırı olarak belirlenmiştir
   - Sahte sipariş, kurumsal alım gibi özel durumlar bu segment sayesinde ayrıştırılabilir
+- **Tespit Edilen Aykırı Değerler**:
+  - 6 aykırı sipariş tespit edildi
+  - En yüksek tutarlı siparişler:
+    - 17250.00 USD (Almanya)
+    - 16321.90 USD (ABD)
+    - 15810.00 USD (Brezilya)
+  - Bu siparişler kurumsal alımlar olabilir ve özel fiyatlandırma gerektirebilir
 
 ### 4. Ülke Analizi
 - **Endpoint**: `/country-analysis`
 - **URL**: http://localhost:8003/country-analysis
 - **Metod**: GET
-- **Açıklama**: Ülkelerin sipariş davranışlarını analiz eder: toplam sipariş sayısı ve ortalama sipariş tutarı temel alınarak DBSCAN ile ülke grupları oluşturulur.
+- **Açıklama**: Bu endpoint, ülkelerin sipariş davranışlarını analiz eder: toplam sipariş sayısı ve ortalama sipariş tutarı temel alınarak DBSCAN ile ülke grupları oluşturulur.
 - **Görseller**: 
   - Ana Görsel: ![Ülke Analizi](images/country_dbscan.png)
     - Bu görsel, ülkelerin toplam satış ve müşteri sayısına göre dağılımını gösterir. X ekseni toplam satışı, Y ekseni müşteri sayısını temsil eder. Her nokta bir ülkeyi gösterir.
@@ -139,6 +158,13 @@ python dbscan_api.py
   - Bazı ülkelerde az sipariş ama yüksek tutar; bazılarında çok sipariş ama düşük tutar gözlenmiştir
   - Farklı tüketim alışkanlıkları tespit edilmiştir
   - Bölgesel pazarlama stratejileri için önemli bir yol göstericidir
+- **Tespit Edilen Aykırı Değerler**:
+  - 4 aykırı ülke tespit edildi:
+    - Avusturya: Yüksek ortalama sipariş değeri (1115.97 USD)
+    - Almanya: Yüksek sipariş sayısı (122 sipariş)
+    - İrlanda: Yüksek ortalama sipariş değeri (1042.13 USD)
+    - ABD: Yüksek sipariş sayısı (122 sipariş)
+  - Bu ülkeler için özel pazarlama ve fiyatlandırma stratejileri geliştirilebilir
 
 ## Teknik Detaylar
 
