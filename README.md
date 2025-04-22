@@ -3,9 +3,9 @@
 Bu proje, Northwind veritabanı üzerinde DBSCAN algoritması kullanarak çeşitli analizler yapan bir REST API'dir. API, müşteri segmentasyonu, tedarikçi analizi, sipariş analizi ve ülke bazlı analizler gibi farklı analizler sunmaktadır.
 
 ## Proje Ekibi
-Sevgi BERK
-Yağmur POLAT
-İpek Iraz ESİN
+Sevgi BERK,
+Yağmur POLAT,
+İpek Iraz ESİN,
 Mine EMEKTAR
 
 ## Proje Yapısı
